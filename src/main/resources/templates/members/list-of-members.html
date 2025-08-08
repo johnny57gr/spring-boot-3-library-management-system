@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <title>Member Directory</title>
+    <style>
+        .container { margin-top: 40px; }
+    </style>
+
+</head>
+<body class="sb-nav-fixed">
+    <!--<div th:replace="fragments/navbar :: navbar"></div>-->
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <a class="navbar-brand ps-3" th:href="@{/}">Home</a>
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Home</div>
+                        <a class="nav-link" th:href="@{/books/list}">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-book"></i></div>
+                            List of Books
+                        </a>
+                        <a class="nav-link" th:href="@{/books/showFormForAdd}">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-plus"></i></div>
+                            Add New Book
+                        </a>
+                        <div class="sb-sidenav-menu-heading">Members</div>
+                        <a class="nav-link active" th:href="@{/members/list}">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-users"></i></div>
+                            List of Members
+                        </a>
+                        <a class="nav-link" th:href="@{/members/showFormForAdd}">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-user-plus"></i></div>
+                            Add New Member
+                        </a>
+                        <div class="sb-sidenav-menu-heading">Loans</div>
+                        <a class="nav-link" th:href="@{/loans/list}">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-left-right"></i></div>
+                            List of Loans
+                        </a>
+                        <a class="nav-link" th:href="@{/loans/showFormForAdd}">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-plus"></i></div>
+                            Add New Loan
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4">
+                    <h1 class="mb-4 text-center">Member Directory</h1>
+                    <div class="row">
+                        <h3>All Members</h3>
+                        <hr>
+                        <table class="table table-bordered table-striped">
+                            <thead class="table-dark">
+                            <tr>
+                                <th>Id</th>
+                                <th>Last Name</th>
+                                <th>First Name</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>Membership Date</th>
+                                <th>Date of Birth</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="tempMember : ${members}">
+                                <td th:text="${tempMember.id}"/>
+                                <td th:text="${tempMember.lastName}"/>
+                                <td th:text="${tempMember.firstName}"/>
+                                <td th:text="${tempMember.phone}"/>
+                                <td th:text="${tempMember.email}"/>
+                                <td th:text="${#temporals.format(tempMember.membershipDate, 'dd-MM-yyyy')}"></td>
+                                <td th:text="${#temporals.format(tempMember.dateOfBirthday, 'dd-MM-yyyy')}"></td>
+                                <td>
+                                    <a th:href="@{/members/showFormForUpdate(memberId=${tempMember.id})}" class="btn btn-info btn-sm">
+                                        Update
+                                    </a>
+                                    <a th:href="@{/members/delete(memberId=${tempMember.id})}" class="btn btn-danger btn-sm"
+                                       onclick="if (!(confirm('Are you sure you want to delete this member?'))) return false">
+                                        Delete
+                                    </a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script th:src="@{/js/scripts.js}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+<script th:src="@{/js/datatables-simple-demo.js}"></script>
+</body>
+</html>
