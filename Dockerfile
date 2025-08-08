@@ -1,11 +1,16 @@
-# Use a Java 17 base image
-FROM openjdk:17-jdk-slim
+# Step 1: Build stage
+FROM maven:3.9.4-eclipse-temurin-17 as builder
 
-# Set working directory
 WORKDIR /app
+COPY . .
 
-# Copy the jar file (προσαρμόζεις αν έχει άλλο όνομα)
-COPY target/library-management-0.0.1-SNAPSHOT.jar app.jar
+RUN ./mvnw clean package -DskipTests
 
-# Run the app
-CMD ["java", "-jar", "app.jar"]
+# Step 2: Run stage
+FROM eclipse-temurin:17-jdk
+
+WORKDIR /app
+COPY --from=builder /app/target/library-management-0.0.1-SNAPSHOT.jar app.jar
+
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "app.jar"]
