@@ -4,6 +4,9 @@ FROM maven:3.9.4-eclipse-temurin-17 as builder
 WORKDIR /app
 COPY . .
 
+# ✅ Δώσε εκτελέσιμα δικαιώματα στο mvnw
+RUN chmod +x mvnw
+
 RUN ./mvnw clean package -DskipTests
 
 # Step 2: Run stage
