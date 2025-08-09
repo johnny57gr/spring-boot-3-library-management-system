@@ -84,30 +84,47 @@
                                           class="error"></span>
                                 </div>
                             </div>
-                            <div class="d-flex align-items-center">
-                                <input type="text" th:field="*{author}"
-                                       th:classappend="${#fields.hasErrors('title')} ? 'is-invalid'"
-                                       class="form-control w-100 w-md-50 w-lg-25" placeholder="Author">
-                                <span th:if="${#fields.hasErrors('author')}"
-                                      th:errors="*{author}"
-                                      class="error"></span>
+                            <!-- Author -->
+                            <div class="row mb-3">
+                                <div class="col-12 col-md-6 col-lg-4">
+                                    <input type="text" th:field="*{author}"
+                                            th:classappend="${#fields.hasErrors('title')} ? 'is-invalid'"
+                                            class="form-control" placeholder="Author">
+                                    <span th:if="${#fields.hasErrors('author')}"
+                                            th:errors="*{author}"
+                                            class="error">
+                                    </span>
+                                </div>
                             </div>
-                            <div class="d-flex align-items-center">
-                                <input type="text" th:field="*{isbn}"
-                                       th:classappend="${#fields.hasErrors('title')} ? 'is-invalid'"
-                                       class="form-control mb-3 w-100 w-md-50 w-lg-25" placeholder="ISBN">
-                                <span th:if="${#fields.hasErrors('isbn')}"
-                                      th:errors="*{isbn}"
-                                      class="error"></span>
+                            <!-- ISBN -->
+                            <div class="row mb-3">
+                                <div class="col-12 col-md-6 col-lg-4">
+                                    <input type="text" th:field="*{isbn}"
+                                           th:classappend="${#fields.hasErrors('title')} ? 'is-invalid'"
+                                           class="form-control" placeholder="ISBN">
+                                    <span th:if="${#fields.hasErrors('isbn')}"
+                                          th:errors="*{isbn}"
+                                          class="error"></span>
+                                </div>
                             </div>
-
-                            <select th:field="*{available}" class="form-control mb-3 w-100 w-md-50 w-lg-25">
-                                <option th:value="true">Available</option>
-                                <option th:value="false">Not Available</option>
-                            </select>
-
-                            <button type="submit" class="btn btn-primary w-100 w-sm-auto">Save</button><hr>
-                            <a class="btn btn-secondary w-100 w-sm-auto" role="button" th:href="@{/books/list}">Back to Books List</a>
+                            <!-- Is Available -->
+                            <div class="row mb-3">
+                                <div class="col-12 col-md-6 col-lg-4">
+                                    <select th:field="*{available}" class="form-control">
+                                        <option th:value="true">Available</option>
+                                        <option th:value="false">Not Available</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- Buttons -->
+                            <div class="row mt-4">
+                                <div class="col-6 col-md-3 mb-2">
+                                    <button type="submit" class="btn btn-primary w-100">Save</button>
+                                </div>
+                                <div class="col-6 col-md-3">
+                                    <a class="btn btn-secondary w-100" role="button" th:href="@{/books/list}">Back to Books List</a>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>
