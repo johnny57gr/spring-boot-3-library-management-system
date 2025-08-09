@@ -68,48 +68,50 @@
                     <div class="row">
                         <h3>All Loans</h3>
                         <hr>
-                        <table class="table table-bordered table-striped">
-                            <thead class="table-dark">
-                            <tr>
-                                <th>Id</th>
-                                <th>Member Name</th>
-                                <th>Book Title</th>
-                                <th>Borrow Date</th>
-                                <th>Return Date</th>
-                                <th style="width:5px;">Returned</th>
-                                <th>Actions</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr th:each="tempLoan : ${loans}">
-                                <td th:text="${tempLoan.id}"/>
-                                <td th:text="${tempLoan.member.firstName+ ' ' + tempLoan.member.lastName}" />
-                                <td th:text="${tempLoan.book.title}"/>
-                                <td th:text="${#temporals.format(tempLoan.borrowDate, 'dd-MM-yyyy')}" />
-                                <td th:text="${#temporals.format(tempLoan.returnDate, 'dd-MM-yyyy')}" />
-                                <td id="availability">
-                                    <span th:if="${tempLoan.returned}" class="text-success"><i class="bi bi-check-lg"></i></span>
-                                    <span th:if="${!tempLoan.returned}" class="text-danger"><i class="bi bi-x-lg"></i></span>
-                                </td>
-                                <td>
-                                    <form th:action="@{/loans/return}" method="post" th:if="${!tempLoan.returned}">
-                                        <input type="hidden" name="loanId" th:value="${tempLoan.id}" />
-                                        <button type="submit" class="btn btn-success btn-sm">Mark as Returned</button>
-                                    </form>
-                                    <span th:if="${tempLoan.returned}" class="text-muted">Already Returned</span>
-                                    <a th:href="@{/loans/showFormForUpdate(loanId=${tempLoan.id})}" class="btn btn-info btn-sm">
-                                        Update
-                                    </a>
-                                    <a th:href="@{/loans/delete(loanId=${tempLoan.id})}" class="btn btn-danger btn-sm"
-                                       onclick="if (!(confirm('Are you sure you want to delete this loan?'))) return false">
-                                        Delete
-                                    </a>
-                                </td>
-
-
-                            </tr>
-                            </tbody>
-                        </table>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped align-middle">
+                                <thead class="table-dark">
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Member Name</th>
+                                    <th>Book Title</th>
+                                    <th>Borrow Date</th>
+                                    <th>Return Date</th>
+                                    <th style="width:5px;">Returned</th>
+                                    <th>Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="tempLoan : ${loans}">
+                                    <td th:text="${tempLoan.id}"/>
+                                    <td th:text="${tempLoan.member.firstName+ ' ' + tempLoan.member.lastName}" />
+                                    <td th:text="${tempLoan.book.title}"/>
+                                    <td th:text="${#temporals.format(tempLoan.borrowDate, 'dd-MM-yyyy')}" />
+                                    <td th:text="${#temporals.format(tempLoan.returnDate, 'dd-MM-yyyy')}" />
+                                    <td id="availability">
+                                        <span th:if="${tempLoan.returned}" class="text-success"><i class="bi bi-check-lg"></i></span>
+                                        <span th:if="${!tempLoan.returned}" class="text-danger"><i class="bi bi-x-lg"></i></span>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex flex-wrap gap-1">
+                                            <form th:action="@{/loans/return}" method="post" th:if="${!tempLoan.returned}">
+                                                <input type="hidden" name="loanId" th:value="${tempLoan.id}" />
+                                                <button type="submit" class="btn btn-success btn-sm">Mark as Returned</button>
+                                            </form>
+                                            <span th:if="${tempLoan.returned}" class="text-muted">Already Returned</span>
+                                            <a th:href="@{/loans/showFormForUpdate(loanId=${tempLoan.id})}" class="btn btn-info btn-sm">
+                                                Update
+                                            </a>
+                                            <a th:href="@{/loans/delete(loanId=${tempLoan.id})}" class="btn btn-danger btn-sm"
+                                               onclick="if (!(confirm('Are you sure you want to delete this loan?'))) return false">
+                                                Delete
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </main>
