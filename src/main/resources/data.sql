@@ -1,20 +1,11 @@
 -- === Demo data for table book ===
 INSERT INTO book (id, author, available, isbn, title) VALUES
-(2, 'Robert C. Martin', false, '9780132350884', 'Clean Code'),
-(3, 'Αντουάν ντε Σαιντ-Εξυπερύ', false, '9789603251234', 'Ο Μικρός Πρίγκιπας'),
-(4, 'Φραντς Κάφκα', true, '9789604537863', 'Η Δίκη'),
-(5, 'Άλκη Ζέη', true, '9789600342928', 'Το Καπλάνι της Βιτρίνας'),
-(6, 'Γιάννης Ρίτσος', true, '9789600422187', 'Η Σονάτα του Σεληνόφωτος'),
-(8, 'Αρκάς', false, '978618070066', 'Η Ζωή Μετά');
-
--- === Demo data for table loans ===
-INSERT INTO loans (id, return_date, loan_date, due_date, returned, member_id, book_id) VALUES
-(2, '2025-08-03', '2025-08-01', '2025-08-08', true, 5, 2),
-(3, NULL, '2025-08-03', '2025-08-10', false, 2, 1),
-(4, '2025-08-03', '2025-08-03', '2025-08-05', true, 6, 4),
-(5, '2025-08-03', '2025-08-03', '2025-08-10', true, 4, 2),
-(6, '2025-08-08', '2025-08-03', '2025-08-10', true, 5, 5),
-(8, NULL, '2025-08-08', '2025-08-15', false, 8, 7);
+(2, 'Robert C. Martin', FALSE, '9780132350884', 'Clean Code'),
+(3, 'Αντουάν ντε Σαιντ-Εξυπερύ', FALSE, '9789603251234', 'Ο Μικρός Πρίγκιπας'),
+(4, 'Φραντς Κάφκα', TRUE, '9789604537863', 'Η Δίκη'),
+(5, 'Άλκη Ζέη', TRUE, '9789600342928', 'Το Καπλάνι της Βιτρίνας'),
+(6, 'Γιάννης Ρίτσος', TRUE, '9789600422187', 'Η Σονάτα του Σεληνόφωτος'),
+(8, 'Αρκάς', FALSE, '978618070066', 'Η Ζωή Μετά');
 
 -- === Demo data for table members ===
 INSERT INTO members (id, birthdate, email, first_name, last_name, registration_date, phone) VALUES
@@ -25,3 +16,12 @@ INSERT INTO members (id, birthdate, email, first_name, last_name, registration_d
 (5, '1988-05-17', 'demi.kal@example.com', 'Δημήτρης', 'Καλογήρου', '2024-08-10', '6931122334'),
 (6, '1981-10-16', 'mpassaqm@hotmail.com', 'Μαριάννα', 'Πασσά', '2025-08-03', '6934995004'),
 (7, '2016-10-09', 'melina.triant@gmail.com', 'Μελίνα', 'Τριανταφυλλίδη', '2025-08-08', '6987748452');
+
+-- === Demo data for table loans ===
+INSERT INTO loans (id, return_date, loan_date, due_date, returned, member_id, book_id) VALUES
+(2, '2025-08-03', '2025-08-01', '2025-08-08', TRUE, 5, 2),
+(3, NULL, '2025-08-03', '2025-08-10', FALSE, 2, 1),
+(4, '2025-08-03', '2025-08-03', '2025-08-05', TRUE, 6, 4),
+(5, '2025-08-03', '2025-08-03', '2025-08-10', TRUE, 4, 2),
+(6, '2025-08-08', '2025-08-03', '2025-08-10', TRUE, 5, 5),
+(8, NULL, '2025-08-08', '2025-08-15', FALSE, 8, 7);
