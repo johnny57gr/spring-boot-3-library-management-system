@@ -69,7 +69,7 @@
                         <form action="#" th:action="@{/books/save}"
                               th:object="${book}" method="POST">
                               <!-- Show general validation message if any field has error -->
-                              <span th:if="${#fields.hasErrors()}" class="text-danger">*All fields are required.</span>
+                            <span th:if="${#fields.hasErrors()}" class="text-danger">*All fields are required.</span>
                             <!-- Add hidden form field to handle the update -->
                             <input type="hidden" th:field="*{id}">
                             <!-- Title -->
@@ -119,9 +119,7 @@
                             <!-- Buttons -->
                             <div class="row mt-4">
                                 <div class="col-6 col-md-3 mb-2">
-                                    <button type="submit" class="btn btn-primary w-100">Save</button>
-                                </div>
-                                <div class="col-6 col-md-3">
+                                    <button type="submit" class="btn btn-primary w-100 mb-3">Save</button>
                                     <a class="btn btn-secondary w-100" role="button" th:href="@{/books/list}">Back to Books List</a>
                                 </div>
                             </div>

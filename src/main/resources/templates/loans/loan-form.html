@@ -70,32 +70,44 @@
                         <form action="#" th:action="@{/loans/save}"
                               th:object="${loan}" method="POST">
                             <input type="hidden" th:field="*{id}">
-                            <div class="mb-3">
-                                <label th:for="member" class="form-label">Member</label>
-                                <select id="member" th:field="*{member.id}" class="form-control mb-4 w-25">
-                                    <option value="" disabled selected>Select member</option>
-                                    <option th:each="m : ${members}" th:value="${m.id}" th:text="${m.firstName + ' ' + m.lastName}"></option>
-                                </select>
+                            <div class="row mb-3">
+                                <div class="col-12 col-md-6 col-lg-4">
+                                    <label th:for="member" class="form-label">Member</label>
+                                    <select id="member" th:field="*{member.id}" class="form-control">
+                                        <option value="" disabled selected>Select member</option>
+                                        <option th:each="m : ${members}" th:value="${m.id}" th:text="${m.firstName + ' ' + m.lastName}"></option>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="mb-3">
-                                <label th:for="book" class="form-label">Book</label>
-                                <select id="book" th:field="*{book.id}" class="form-control mb-4 w-25">
-                                    <option value="" disabled selected>Select book</option>
-                                    <option th:each="b : ${books}" th:value="${b.id}" th:text="${b.title}"></option>
-                                </select>
+                            <div class="row mb-3">
+                                <div class="col-12 col-md-6 col-lg-4">
+                                    <label th:for="book" class="form-label">Book</label>
+                                    <select id="book" th:field="*{book.id}" class="form-control">
+                                        <option value="" disabled selected>Select book</option>
+                                        <option th:each="b : ${books}" th:value="${b.id}" th:text="${b.title}"></option>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="mb-3">
-                                <label th:for="borrowDate" class="form-label">Borrow Date</label>
-                                <input type="date" th:field="*{borrowDate}" class="form-control mb-4 w-25" placeholder="yyyy-MM-dd">
-                            </div>
-                            <div class="mb-3">
-                                <label th:for="returnDate" class="form-label">Return Date</label>
-                                <input type="date" th:field="*{returnDate}" class="form-control mb-4 w-25" placeholder="yyyy-MM-dd">
-                            </div>
-                            <button type="submit" class="btn btn-primary col-2">Save</button><hr>
-                            <a class="btn btn-secondary col-2" role="button" th:href="@{/loans/list}">Back to Loan List</a>
-                        </form>
 
+                            <div class="row mb-3">
+                                <div class="col-12 col-md-6 col-lg-4">
+                                    <label th:for="borrowDate" class="form-label">Borrow Date</label>
+                                    <input type="date" th:field="*{borrowDate}" class="form-control" placeholder="yyyy-MM-dd">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-12 col-md-6 col-lg-4">
+                                    <label th:for="returnDate" class="form-label">Return Date</label>
+                                    <input type="date" th:field="*{returnDate}" class="form-control" placeholder="yyyy-MM-dd">
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col-6 col-md-3 mb-2">
+                                    <button type="submit" class="btn btn-primary w-100 mb-3">Save</button>
+                                    <a class="btn btn-secondary w-100" role="button" th:href="@{/loans/list}">Back to Loan List</a>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </main>
