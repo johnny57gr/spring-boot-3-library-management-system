@@ -1,19 +1,18 @@
-# Step 1: Build stage
-FROM maven:3.9.4-eclipse-temurin-17 as builder
-
+# --- Build stage ---
+FROM maven:3.9.4-eclipse-temurin-17 AS builder
 WORKDIR /app
 COPY . .
-
-# ✅ Δώσε εκτελέσιμα δικαιώματα στο mvnw
 RUN chmod +x mvnw
-
 RUN ./mvnw clean package -DskipTests
 
-# Step 2: Run stage
-FROM eclipse-temurin:17-jdk
-
+# --- Runtime stage ---
+FROM eclipse-temurin:17-jre
 WORKDIR /app
 COPY --from=builder /app/target/librarymanagement-0.0.1-SNAPSHOT.jar app.jar
 
+# Προαιρετικά, λίγη ρύθμιση JVM
+ENV JAVA_TOOL_OPTIONS="-XX:+UseG1GC -XX:MaxRAMPercentage=75"
+
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# Πολύ σημαντικό: άκου στη θύρα που δίνει το Render
+CMD ["sh","-c","java -jar app.jar --server.port=${PORT}"]
