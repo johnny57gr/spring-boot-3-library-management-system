@@ -1,5 +1,5 @@
 -- === Demo data for table book ===
-INSERT INTO book (id, author, isavailable, isbn, title) VALUES
+INSERT INTO book (author, isavailable, isbn, title) VALUES
 (2, 'Robert C. Martin', FALSE, '9780132350884', 'Clean Code'),
 (3, 'Αντουάν ντε Σαιντ-Εξυπερύ', FALSE, '9789603251234', 'Ο Μικρός Πρίγκιπας'),
 (4, 'Φραντς Κάφκα', TRUE, '9789604537863', 'Η Δίκη'),
@@ -8,7 +8,7 @@ INSERT INTO book (id, author, isavailable, isbn, title) VALUES
 (8, 'Αρκάς', FALSE, '978618070066', 'Η Ζωή Μετά');
 
 -- === Demo data for table members ===
-INSERT INTO members (id, date_of_birthday, email, first_name, last_name, membership_date, phone) VALUES
+INSERT INTO members (date_of_birthday, email, first_name, last_name, membership_date, phone) VALUES
 (1, '1986-03-23', 'yiannispas86@gmail.com', 'Γιάννης', 'Πασσάς', '2025-07-29', '6984705234'),
 (2, '1990-04-20', 'maria@example.com', 'Μαρία', 'Παπαδοπούλου', '2024-09-15', '6981234567'),
 (3, '1985-12-11', 'marios.k@example.com', 'Μάριος', 'Κωνσταντίνου', '2024-10-01', '6947890123'),
@@ -18,7 +18,7 @@ INSERT INTO members (id, date_of_birthday, email, first_name, last_name, members
 (7, '2016-10-09', 'melina.triant@gmail.com', 'Μελίνα', 'Τριανταφυλλίδη', '2025-08-08', '6987748452');
 
 -- === Demo data for table loans ===
-INSERT INTO loans (id, actual_return_date, borrow_date, return_date, returned, book_id, member_id) VALUES
+INSERT INTO loans (actual_return_date, borrow_date, return_date, returned, book_id, member_id) VALUES
 (2, '2025-08-03', '2025-08-01', '2025-08-08', TRUE, 5, 2),
 (3, NULL, '2025-08-03', '2025-08-10', FALSE, 2, 1),
 (4, '2025-08-03', '2025-08-03', '2025-08-05', TRUE, 6, 4),
