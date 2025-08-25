@@ -1,38 +1,95 @@
-# 📚 Library Management System (Spring Boot 3)
+# Library Management System (Spring Boot 3)
 
-This is the Spring Boot web version of my original Java console-based Library Management System. The project provides a complete web interface for managing books, members, and loans using modern web technologies and a layered backend architecture.
+A simple **CRUD web application** built with Spring Boot 3.  
+This project focuses on basic Create, Read, Update, and Delete (CRUD) operations for books, members, and loans in a library.
 
----
-
-## 🚀 Live Demo
-
-🔗 Link (hosted on Render): *Coming Soon*
+ **Note:** This project does **not** include authentication, user roles, or admin features.  
+It is designed as a learning exercise to practice Spring Boot, JPA, and web development basics.
 
 ---
 
-## 🧠 Features
+## Live Demo
 
-- 📖 Add, update, delete, and view books
-- 👤 Register and manage library members
-- 📅 Issue and return books
-- 🗃 View all data through a web interface (Thymeleaf)
-- 🛡️ Layered architecture (Controller → Service → Repository)
+🔗 [View the app on Render](https://spring-boot-3-library-management-system.onrender.com/)
 
 ---
 
-## ⚙️ Tech Stack
+## Features (CRUD)
+
+- **Books** → add, update, delete, view
+- **Members** → register, edit, remove, view
+- **Loans** → issue and return books
+- View data via a simple **Thymeleaf web interface**
+-  Layered backend architecture (Controller → Service → Repository)
+
+---
+
+## Tech Stack
 
 - **Java 17**
 - **Spring Boot 3**
-- **Spring Data JPA**
+- **Spring Data JPA (Hibernate)**
 - **Thymeleaf**
-- **H2 Database** (or switchable to MySQL/PostgreSQL)
+- **PostgreSQL** (production) / **H2** (local development)
 - **Maven**
 - **HTML / CSS**
-- 🤖 Built with help from ChatGPT (AI assistant)
 
 ---
 
-## 👤 Author
+## Installation (local)
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/johnny57gr/librarymanagement.git
+   cd librarymanagement
+
+2. Configure your database (PostgreSQL or H2).
+   Update application.properties or set environment variables:
+
+
+    SPRING_DATASOURCE_URL=jdbc:postgresql://<host>:5432/<dbname>?sslmode=require
+    SPRING_DATASOURCE_USERNAME=<username>
+    SPRING_DATASOURCE_PASSWORD=<password>
+
+3. Run the project:
+
+        ./mvnw spring-boot:run
+
+
+4. Then open:   
+    http://localhost:8080
+
+## Project Structure
+
+<pre>
+📦 src
+ ┣ 📂 main
+ ┃ ┣ 📂 java
+ ┃ ┃ └── 📂 com
+ ┃ ┃     └── 📂 ypassas
+ ┃ ┃         └── 📂 springboot
+ ┃ ┃             └── 📂 librarymanagement
+ ┃ ┃                 ├── 📂 controller
+ ┃ ┃                 ├── 📂 model   
+ ┃ ┃                 ├── 📂 repository   
+ ┃ ┃                 ├── 📂 service        
+ ┃ ┃                 └── 📄 LibrarymanagementApplication.java
+ ┃ ┣ 📂 resources
+ ┃ ┃ ├── 📂 static      # CSS, JS, images 
+ ┃ ┃ ├── 📂 templates   # Thymeleaf templates (HTML pages)
+ ┃ ┃ └── 📄 application.properties
+</pre>
+
+## Author
 - **Yiannis Passas**
-- **GitHub: johnny57gr**
+- **Created by Ioannis Passas**
+- **<a href="mailto:yiannispas86@gmail.com">yiannispas86@gmail.com</a>**
+- **<a href="https://www.linkedin.com/in/yiannis-passas-dev/" target="_blank">Linkedin</a>**
+
+## Notes
+This project was created as a learning exercise to practice:
+
+- **Spring Boot fundamentals**
+- **CRUD operations with JPA/Hibernate**
+- **MVC architecture (Controllers, Services, Repositories)**
+- **Server-side rendering with Thymeleaf**
