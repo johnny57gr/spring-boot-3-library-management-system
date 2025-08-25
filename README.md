@@ -45,15 +45,14 @@ It is designed as a learning exercise to practice Spring Boot, JPA, and web deve
 
 2. Configure your database (PostgreSQL or H2).
    Update application.properties or set environment variables:
-
-
+    ```bash
     SPRING_DATASOURCE_URL=jdbc:postgresql://<host>:5432/<dbname>?sslmode=require
     SPRING_DATASOURCE_USERNAME=<username>
     SPRING_DATASOURCE_PASSWORD=<password>
 
 3. Run the project:
-
-        ./mvnw spring-boot:run
+    ```bash
+    ./mvnw spring-boot:run
 
 
 4. Then open:   
