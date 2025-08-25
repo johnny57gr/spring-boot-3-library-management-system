@@ -81,7 +81,6 @@ It is designed as a learning exercise to practice Spring Boot, JPA, and web deve
 </pre>
 
 ## Author
-- **Yiannis Passas**
 - **Created by Ioannis Passas**
 - **<a href="mailto:yiannispas86@gmail.com">yiannispas86@gmail.com</a>**
 - **<a href="https://www.linkedin.com/in/yiannis-passas-dev/" target="_blank">Linkedin</a>**
