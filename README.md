@@ -77,6 +77,7 @@ It is designed as a learning exercise to practice Spring Boot, JPA, and web deve
  ┃ ┃ ├── 📂 static      # CSS, JS, images 
  ┃ ┃ ├── 📂 templates   # Thymeleaf templates (HTML pages)
  ┃ ┃ └── 📄 application.properties
+ README.md
 </pre>
 
 ## Author
